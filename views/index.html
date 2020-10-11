@@ -225,17 +225,19 @@
 
             <div class="row mb-4">
               <div class="col-12">
-                <button class="btn btn-dark">
+                <button class="btn btn-dark" onclick="play()">
                   <span
+                    style="display: none"
+                    id="play_spinner"
                     class="spinner-grow spinner-grow-sm mr-1"
                     role="status"
                     aria-hidden="true"
                   ></span>
-                  <i class="fe-play"></i>
-                  Running...
+
+                  <b id="play_text">PLAY</b>
                 </button>
-                <button class="btn btn-danger">
-                  <i class="fe-stop-circle"></i> Stop
+                <button class="btn btn-danger" onclick="stop()">
+                  <b id="stop_text">STOP</b>
                 </button>
               </div>
             </div>
@@ -1016,9 +1018,20 @@
         $("#test_progress").css("width", step * 25 + "%");
       }
 
-      function init() {
-        updateProgress(1);
+      function play() {
+        $("#play_spinner").css("display", "inline-block");
+        $("#play_text").text("RUNNING...");
       }
+
+      function stop() {
+        $("#play_spinner").css("display", "none");
+        $("#play_text").text("PLAY");
+      }
+
+      function init() {
+        updateProgress(0);
+      }
+
       window.onload = init();
     </script>
   </body>
