@@ -248,6 +248,7 @@
 
             <div class="progress mb-2">
               <div
+                id="test_progress"
                 class="progress-bar progress-bar-striped progress-bar-animated bg-dark"
                 role="progressbar"
                 aria-valuenow="25"
@@ -259,40 +260,64 @@
 
             <div class="row mb-4">
               <div class="col-xl-3 col-md-6">
-                <div class="card bg-dark text-white">
+                <div class="card bg-dark text-white" id="card1">
                   <div class="card-body">
-                    <h5 class="card-title text-white">Pull</h5>
-                    <p class="card-text">asdfsadf</p>
+                    <h3 style="display: inline-block" class="text-white">1.</h3>
+                    <h5
+                      class="card-title text-white"
+                      style="display: inline-block"
+                    >
+                      Pull
+                    </h5>
+                    <p class="card-text">gerrit서버에서 clone중입니다.</p>
                   </div>
                 </div>
               </div>
               <!-- end col -->
 
               <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
+                <div class="card bg-secondary text-white" id="card2">
                   <div class="card-body">
-                    <h5 class="card-title text-white">Enable TRACE</h5>
-                    <p class="card-text">asdfsadf</p>
+                    <h3 style="display: inline-block" class="text-white">2.</h3>
+                    <h5
+                      class="card-title text-white"
+                      style="display: inline-block"
+                    >
+                      Build
+                    </h5>
+                    <p class="card-text">TRACE옵션을 켜고 Build중입니다.</p>
                   </div>
                 </div>
               </div>
               <!-- end col -->
 
               <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
+                <div class="card bg-secondary text-white" id="card3">
                   <div class="card-body">
-                    <h5 class="card-title text-white">Build</h5>
-                    <p class="card-text">asdfsadf</p>
+                    <h3 style="display: inline-block" class="text-white">3.</h3>
+                    <h5
+                      class="card-title text-white"
+                      style="display: inline-block"
+                    >
+                      Install
+                    </h5>
+                    <p class="card-text">생성된 APK를 설치중입니다.</p>
                   </div>
                 </div>
               </div>
               <!-- end col -->
 
               <div class="col-xl-3 col-md-6">
-                <div class="card bg-secondary text-white">
+                <div class="card bg-secondary text-white" id="card4">
                   <div class="card-body">
-                    <h5 class="card-title text-white">Run</h5>
-                    <p class="card-text">asdfsadf</p>
+                    <h3 style="display: inline-block" class="text-white">4.</h3>
+                    <h5
+                      class="card-title text-white"
+                      style="display: inline-block"
+                    >
+                      Run
+                    </h5>
+                    <p class="card-text">진입속도를 측정중입니다.</p>
                   </div>
                 </div>
               </div>
@@ -976,5 +1001,25 @@
 
     <!-- App js -->
     <script src="../assets/js/app.min.js"></script>
+    <script>
+      function updateProgress(step) {
+        for (var i = 1; i <= 4; i++) {
+          if (i == step) {
+            $("#card" + i).addClass("bg-dark");
+            $("#card" + i).removeClass("bg-secondary");
+          } else {
+            $("#card" + i).removeClass("bg-dark");
+            $("#card" + i).addClass("bg-secondary");
+          }
+        }
+        $("#test_progress").attr("aria-valuenow", step * 25);
+        $("#test_progress").css("width", step * 25 + "%");
+      }
+
+      function init() {
+        updateProgress(1);
+      }
+      window.onload = init();
+    </script>
   </body>
 </html>
