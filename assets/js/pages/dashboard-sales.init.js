@@ -1,3 +1,26 @@
+function generateInfoDialog(commit, data) {
+  $("#modal-commit").text(commit);
+
+  let rows = "";
+  let sum = 0;
+  for (d of data) {
+    sum = sum + parseFloat(d.data);
+    const row = `<div class="row">
+    <div class="col text-center"><b>${d.name}</b></div>
+    <div class="col">${d.data}ms</div></div>`;
+    rows = rows + row;
+  }
+  $("#modal-data").html(rows);
+  let total_html = `<hr />
+  <div class="row">
+    <div class="col text-center text-primary">
+      <h5>총 진입 속도</h5>
+    </div>
+    <h4 class="col text-info">${sum}ms</h4>
+  </div>`;
+  $("#modal-total").html(total_html);
+}
+
 var colors = ["#3bafda", "#1abc9c", "#f672a7", "#000000", "#5555ff"];
 var options = {
   chart: {
@@ -19,7 +42,8 @@ var options = {
           obj.name = s.name;
           values.push(obj);
         });
-        alert(JSON.stringify(values));
+        generateInfoDialog(labels[idx], values);
+        $("#chartinfo-btn").click();
         //pop-up
       },
     },

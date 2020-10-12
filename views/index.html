@@ -405,6 +405,63 @@
         </div>
         <!-- content -->
 
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#standard-modal"
+          id="chartinfo-btn"
+          style="display: none"
+        >
+          chartinfo
+        </button>
+
+        <!-- Standard modal content -->
+        <div
+          id="standard-modal"
+          class="modal fade"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="standard-modalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="standard-modalLabel">차트정보</h4>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  ×
+                </button>
+              </div>
+              <div class="modal-body">
+                <h6>Commit ID</h6>
+                <h5 class="text-info" id="modal-commit"></h5>
+                <hr />
+                <h6>TRACE별 진입속도</h6>
+                <div id="modal-data"></div>
+                <div id="modal-total"></div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  data-dismiss="modal"
+                >
+                  닫기
+                </button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
         <!-- Footer Start -->
         <footer class="footer">
           <div class="container-fluid">
