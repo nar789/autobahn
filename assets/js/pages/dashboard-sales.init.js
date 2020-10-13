@@ -35,6 +35,9 @@ var options = {
     events: {
       click: function (event, chartContext, config) {
         let idx = config.dataPointIndex;
+        if (idx < 0) {
+          return;
+        }
         let values = [];
         series.forEach((s) => {
           let obj = {};
