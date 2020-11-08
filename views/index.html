@@ -112,11 +112,42 @@
         });
       }
 
+      function displayChartSpinner(show) {
+        if (show) {
+          $("#chart-spinner").css("display", "block");
+        } else {
+          $("#chart-spinner").css("display", "none");
+        }
+      }
+
+      function displayChart(show) {
+        if (show) {
+          $("#chart").css("display", "block");
+        } else {
+          $("#chart").css("display", "none");
+        }
+      }
+
+      function loadChart(show) {
+        if (show) {
+          displayChart(false);
+          displayChartSpinner(true);
+        } else {
+          displayChart(true);
+          displayChartSpinner(false);
+        }
+      }
+
       function init() {
+        loadChart(true);
         updateProgress(0);
         generateKeyMap();
         loadTraceGroupToKeyMap();
         chartAdapter();
+        setTimeout(() => {
+          loadChart(false);
+        }, 3000);
+
         console.log(keyMap);
       }
 
